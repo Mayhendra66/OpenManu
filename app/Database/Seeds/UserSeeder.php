@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
 
         $model->insert([
             'username' => 'admin',
-            'email' => 'admin@mail.com',
+            'email' => 'admin@gmail.com',
             'number' => '081234567891',
             'password' => password_hash('123456', PASSWORD_DEFAULT)
         ]);

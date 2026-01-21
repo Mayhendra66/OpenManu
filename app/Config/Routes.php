@@ -16,4 +16,7 @@ $routes->post('/registerProcess', 'RegisterController::registerProcess');
 $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
 $routes->get('/logout', 'AuthController::logout');
 
+$routes->get('/forget', 'ForgetController::forget');
+$routes->post('/testEmail', 'ForgetController::testEmail');
+
 

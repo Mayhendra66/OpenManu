@@ -14,7 +14,7 @@ class UserModels extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'username', 'email', 'number', 'password'
+        'username', 'email', 'number', 'password','reset_otp', 'reset_expired'
     ];
 
     

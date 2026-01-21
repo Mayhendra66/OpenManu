@@ -38,6 +38,16 @@ database.default.DBDriver = MySQLi
 database.default.DBPrefix =
 database.default.port = 3306
 
+email.protocol = smtp
+email.SMTPHost = smtp.gmail.com
+email.SMTPUser = 
+email.SMTPPass = 
+email.SMTPPort = 
+email.SMTPCrypto = tls
+
+email.mailType = html
+email.charset = utf-8
+
 # If you use MySQLi as tests, first update the values of Config\Database::$tests.
 # database.tests.hostname = localhost
 # database.tests.database = ci4_test

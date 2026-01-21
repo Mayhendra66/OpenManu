@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Forgot Password</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -15,14 +15,14 @@
             <div class="col-md-5 col-lg-4">
                 <div class="card">
                     <div class="card-body p-4">
-                        <h2 class="card-title text-center mb-4">Login</h2>
+                        <h2 class="card-title text-center mb-4">Forgot Password Form</h2>
 <?php if (session()->getFlashdata('error')) : ?>
                         <div class="alert alert-danger py-2">
                                 <?= session()->getFlashdata('error') ?>
                         </div>
                          <?php endif ?>
 
-                        <form method="post" action="/login">
+                        <form method="post" action="/testEmail">
                             <?= csrf_field() ?>
 
                             <div class="mb-3">
@@ -30,16 +30,8 @@
                                 <input type="text" class="form-control" id="email" name="email" placeholder="Enter your Email" required>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
-                                <div class="mt-1 d-flex justify-content-end">
-                                <a href="forget">Forgot Password</a>
-                                </div>
-                            </div>
-
                             <div class="d-grid mb-3">
-                                <button type="submit" class="btn btn-primary">Login</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
 
                             <div class="text-center">
