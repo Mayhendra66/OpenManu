@@ -11,6 +11,7 @@ class AuthController extends BaseController
 {
     public function login(): string
     {
+
         return view('auth/login');
     }
 
@@ -33,9 +34,11 @@ class AuthController extends BaseController
 
         session()->set([
             'user_id' => $user['id'],
+            'username'  => $user['username'],
             'email' => $user['email'],
             'isLoggedIn' => true
         ]);
+
 
         return redirect()->to('/dashboard');
     }

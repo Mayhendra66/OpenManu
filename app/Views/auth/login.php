@@ -12,15 +12,33 @@
 
     <div class="container">
         <div class="row justify-content-center align-items-center min-vh-100">
+            
+
             <div class="col-md-5 col-lg-4">
                 <div class="card">
                     <div class="card-body p-4">
                         <h2 class="card-title text-center mb-4">Login</h2>
-<?php if (session()->getFlashdata('error')) : ?>
-                        <div class="alert alert-danger py-2">
+                        <?php if (session()->getFlashdata('error')) : ?>
+                            <div class="alert alert-danger py-2">
                                 <?= session()->getFlashdata('error') ?>
-                        </div>
-                         <?php endif ?>
+                            </div>
+                        <?php endif ?>
+                        <!-- ALERT SUCCESS -->
+
+                        <?php if (session()->getFlashdata('success')) : ?>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <?= session()->getFlashdata('success') ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+<?php endif ?>
+
+<?php if (session()->getFlashdata('error')) : ?>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <?= session()->getFlashdata('error') ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+<?php endif ?>
+<!-- ALERT SUCCESS -->
 
                         <form method="post" action="/login">
                             <?= csrf_field() ?>
@@ -34,7 +52,7 @@
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
                                 <div class="mt-1 d-flex justify-content-end">
-                                <a href="forget">Forgot Password</a>
+                                    <a href="forget">Reset Password</a>
                                 </div>
                             </div>
 
@@ -51,5 +69,6 @@
                 </div>
             </div>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-        </body>
+</body>
+
 </html>

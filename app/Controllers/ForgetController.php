@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\UserModels;
-use CodeIgniter\HTTP\ResponseInterface;
+use Config\Auth;
 
 class ForgetController extends BaseController
 {
@@ -28,61 +28,21 @@ class ForgetController extends BaseController
             return redirect()->back()->with('error', 'Email tidak terdaftar');
         }
 
-        // 🔐 Generate OTP
-        $otp = random_int(100000, 999999);
+        // Ambil config
+        $authConfig = new Auth();
 
-        // ⏰ Expired 10 menit
-        $expired = date('Y-m-d H:i:s', strtotime('+10 minutes'));
-
-        // Simpan OTP
+        // Reset password ke default
         $userModel->update($user['id'], [
-            'reset_otp'     => $otp,
-            'reset_expired' => $expired
+            'password' => password_hash(
+                $authConfig->defaultPassword,
+                PASSWORD_DEFAULT
+            ),
+            'is_password_default' => 1
         ]);
 
-        $emailService = \Config\Services::email();
-
-$emailService->setFrom(
-    'youremail@gmail.com',
-    'Manufacturing Apps'
-);
-
-$emailService->setTo($email);
-$emailService->setSubject('Email Verification Code');
-
-$emailService->setMessage("
-    <p>Please verify your identity,</p>
-    <p>Here is your authentication code:</p>
-    <h2>{$otp}</h2>
-    <p>Please don't share this code with anyone: we'll never ask for it on the phone or via email.</p>
-    <p>Thanks,</p>
-    <p>.Manufacture Team</p>
-");
-
-
-       if (! $emailService->send()) {
-    dd($emailService->printDebugger(['headers', 'subject', 'body']));
-}
-
-        
-
-        return redirect()->to('/verify-otp')->with('success', 'OTP telah dikirim ke email');
+        return redirect()->to('/')->with(
+            'success',
+            'Reset password berhasil. Gunakan password default.'
+        );
     }
-
-// public function testEmail()
-// {
-//     $email = \Config\Services::email();
-
-//     $email->setFrom('youremail@gmail.com', 'Manufacturing Apps');
-//     $email->setTo('youremail@gmail.com');
-//     $email->setSubject('Test Email');
-//     $email->setMessage('Ini email test');
-
-//     if (! $email->send()) {
-//         dd($email->printDebugger());
-//     }
-
-//     echo 'EMAIL TERKIRIM (CEK SPAM)';
-// }
-
 }

@@ -13,16 +13,27 @@
     <div class="container">
         <div class="row justify-content-center align-items-center min-vh-100">
             <div class="col-md-5 col-lg-4">
-                <div class="card">
-                    <div class="card-body p-4">
-                        <h2 class="card-title text-center mb-4">Forgot Password Form</h2>
-<?php if (session()->getFlashdata('error')) : ?>
-                        <div class="alert alert-danger py-2">
-                                <?= session()->getFlashdata('error') ?>
-                        </div>
-                         <?php endif ?>
+                
 
-                        <form method="post" action="/testEmail">
+                <div class="card">
+                    
+                    <div class="card-body p-4">
+                        <!-- ALERT JUST ERROR -->
+                        <?php if (session()->getFlashdata('error')) : ?>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <?= session()->getFlashdata('error') ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+<?php endif ?>
+<!-- ALERT JUST ERROR -->
+                        <h2 class="card-title text-center mb-4">Forgot Password Form</h2>
+                        <?php if (session()->getFlashdata('error')) : ?>
+                            <div class="alert alert-danger py-2">
+                                <?= session()->getFlashdata('error') ?>
+                            </div>
+                        <?php endif ?>
+
+                        <form method="post" action="/forgetProcess">
                             <?= csrf_field() ?>
 
                             <div class="mb-3">
@@ -43,5 +54,6 @@
                 </div>
             </div>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-        </body>
+</body>
+
 </html>
