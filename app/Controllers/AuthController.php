@@ -40,7 +40,7 @@ class AuthController extends BaseController
         ]);
 
 
-        return redirect()->to('/dashboard');
+        return redirect()->to('pages/dashboard');
     }
 
     public function logout()
