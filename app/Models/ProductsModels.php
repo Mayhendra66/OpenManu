@@ -6,14 +6,14 @@ use CodeIgniter\Model;
 
 class ProductsModels extends Model
 {
-    protected $table            = 'productsmodels';
+    protected $table            = 'products';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'company_id','product_code','product_name','unit','status'
+        'user_id','product_code','product_name','unit','status','created_at'
     ];
 
     protected bool $allowEmptyInserts = false;
