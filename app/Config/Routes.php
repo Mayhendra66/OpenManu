@@ -19,8 +19,11 @@ $routes->get('pages/dashboard', 'Dashboard::index', ['filter' => 'auth']);
 $routes->get('products', 'Products\ProductController::index', ['filter' => 'auth']);
 $routes->get('action/create', 'Products\ProductController::createview', ['filter' => 'auth']);
 $routes->post('products/store', 'Products\ProductController::createstore', ['filter' => 'auth']);
-$routes->get('products/edit/(:num)', 'Products\ProductController::edit/$1');
-$routes->get('products/delete/(:num)', 'Products\ProductController::delete/$1');
+
+$routes->get('products/editview/(:num)', 'Products\ProductController::editview/$1');
+$routes->post('products/edit/(:num)', 'Products\ProductController::edit/$1');
+
+$routes->get('products/destroy/(:num)', 'Products\ProductController::destroy/$1');
 $routes->get('/logout', 'AuthController::logout'); 
 
 

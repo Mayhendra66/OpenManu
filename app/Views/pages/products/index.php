@@ -48,10 +48,10 @@
                         </td>
                         <td><?= esc($row['created_at']) ?></td>
                         <td>
-                            <a href="<?= base_url('products/edit/' . $row['id']) ?>"
-                                class="btn btn-primary btn-sm">Update</a>
+                            <a href="<?= base_url('products/editview/' . $row['id']) ?>"
+                                class="btn btn-primary btn-sm">Edit</a>
 
-                            <a href="<?= base_url('products/delete/' . $row['id']) ?>"
+                            <a href="<?= base_url('products/destroy/' . $row['id']) ?>"
                                 class="btn btn-danger btn-sm"
                                 onclick="return confirm('Yakin hapus?')">
                                 Destroy
@@ -64,4 +64,9 @@
         </table>
     </div>
 </div>
+<?php if (session()->getFlashdata('success')): ?>
+<script>
+    alert("<?= session()->getFlashdata('success') ?>");
+</script>
+<?php endif; ?>
 <?= $this->endSection() ?>
